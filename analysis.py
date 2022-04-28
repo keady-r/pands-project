@@ -133,12 +133,12 @@ if __name__ == "__main__":
 # Next is to generate a hsitogram - again, i wanted the end user to be considered when writing this code. How would it be applied in the real world? I wanted to create selectable options again - this time, using radio buttons and incorporating functions. An issue I had with this was that when I selected 'yes' for the graph and had them appear on the screen using show() the information boxes generated under requirement 1 appeared - they were blank with no selectable options but you had to close them in order for the code to continue. A workaround for this was not to have the graphs display on the screen but rahter save them to the PC instead. I researched out to remove the information boxes however I did not find a successful solution. 
 
 #Histogram. Origionally tried to enter the height and wigth of the diagram however an error message occured to say that those commands are no longer supported by 3.3. Through research it was found that the dpi can be used for size adjustment. Histograms and plots are covered in week 8 of lectures. 
-report = input("Would you like to generate a histogram for the Iris data set? (y/n): ")
+report = input("Would you like to generate and save a histogram for the Iris data set? (y/n): ")
 
 if report == 'y' or report =='Y':
     p_length = sns.FacetGrid(data,hue = "Species", height=3)
     p_length.map(sns.histplot,"Petal Length").add_legend()
-    plt.savefig('rkPetalLength.png', dpi = 750)
+    plt.savefig('Histogram:PetalLength.png', dpi = 750)
     
     p_width = sns.FacetGrid(data,hue = "Species",height=3)
     p_width.map(sns.histplot,"Petal Width").add_legend()
