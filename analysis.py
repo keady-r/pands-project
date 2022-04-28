@@ -21,7 +21,7 @@ from setuptools import Command
 import sys
 import matplotlib.pyplot as plt #Library for matplotlib
 from mpl_toolkits.mplot3d import Axes3D
-from sklearn import decomposition
+from sklearn import decomposition #Used this to create 3D cluster plot
 from sklearn import datasets
 from sklearn.cluster import KMeans
 
@@ -37,7 +37,7 @@ try:
 except FileNotFoundError:
     eas.msgbox("file was not found - please ensure nameing convention is correct 'irisi.data'", title = "Error")
 
-
+  
 #Requirement 1 - Output a summary of the Iris Fisher data 
 #I wanted to incorporate an if/elif/else statment and also allow the user to have an input on what data was generated to make it more interactive and user friendly. By allowing the end user to select what data is generated the aim is to get a cleaner, data focused result. I thought this could reduce the running time - however no great reduction in running time was noticed between selecting y or n.  This section of code uses objects to group the data associated with generating the radio buttons together. Objects were covered in week 10 of lectures. 
 
@@ -72,38 +72,40 @@ class RadioButton(tk.Tk):
 
     def calc():
       if answer.get() == 1:
-        print(' ')
-        print ('Iris Data Summary')
-        print('-------------------------------')
-        print('Number of Samples in the Study under each Species Type')
-        print(' ')
-        print (data ['Species'].value_counts())
-        print(' ------------------------------')
-        print ('Summary of analysis - Count, Mean, Standard Deviation, min, max, and 25th/50th/75th percentiles.')
-        print(' ')
-        print (data.describe())
-        print(' ------------------------------')
-        print ('Data of Sepal Length , Sepal Width, Petal Length, and Petal Width - Grouped by Species')
-        print(' ')
-        print (data .groupby('Species').corr())
-        print(' ------------------------------')
-        print ('Summary of statistical analysis grouped by species')
-        print(' ')
-        print('min')
-        print(data.groupby('Species').min())
-        print(' ')
-        print('max')
-        print(data.groupby('Species').max())
-        print(' ')
-        print('mean')
-        print(data.groupby('Species').mean())
-        print(' ')
-        print('median')
-        print(data.groupby('Species').median()) 
-        print(' ')
-        print('std')
-        print(data.groupby('Species').std())
-        print(' ------------------------------')
+        print(' ', file=open("irisSummary.txt", "a"))
+        print ('Iris Data Summary', file=open("Iris_Data_Summary.txt", "w"))
+        print(" ", file=open("irisSummary.txt", "a"))
+        print('-------------------------------', file=open("irisSummary.txt", "a"))
+        print('Number of Samples in the Study under each Species Type', file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print (data ['Species'].value_counts(), file=open("irisSummary.txt", "a"))
+        print(' ------------------------------', file=open("irisSummary.txt", "a"))
+        print('Summary of analysis - Count, Mean, Standard Deviation, min, max, and 25th/50th/75th percentiles.', file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print(data.describe(), file=open("irisSummary.txt", "a"))
+
+        print('------------------------------', file=open("irisSummary.txt", "a"))
+        print ('Data of Sepal Length , Sepal Width, Petal Length, and Petal Width - Grouped by Species', file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print (data .groupby('Species').corr(), file=open("irisSummary.txt", "a"))
+        print(' ------------------------------', file=open("irisSummary.txt", "a"))
+        print ('Summary of statistical analysis grouped by species',file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print('min', file=open("irisSummary.txt", "a"))
+        print(data.groupby('Species').min(), file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print('max', file=open("irisSummary.txt", "a"))
+        print(data.groupby('Species').max(), file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print('mean', file=open("irisSummary.txt", "a"))
+        print(data.groupby('Species').mean(), file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print('median', file=open("irisSummary.txt", "a"))
+        print(data.groupby('Species').median(), file=open("irisSummary.txt", "a"))
+        print(' ', file=open("irisSummary.txt", "a"))
+        print('std', file=open("irisSummary.txt", "a"))
+        print(data.groupby('Species').std(), file=open("irisSummary.txt", "a"))
+        print(' ------------------------------', file=open("irisSummary.txt", "a"))
         
 #Message box to signify that the code has been ran and the report generated. 
         eas.msgbox("Iris Data Summary Report was Successfully generated - Please close the windows to continue", title = "Report Complete")
