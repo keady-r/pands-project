@@ -1,8 +1,8 @@
 # pands-project
 
-Introductoion:
+Introduction:
 
-The infamous Iris Fisher's data is a well studied statistical chain and pattern recognistion dataseet that studies variables within three species of flowers: setosa, versicolor, and virginica. Each species has four variables those being : Petal length (cm), Petal Width (cm), Sepal length (cm), and Sepal Width (cm). The dataset comprises of 50 cases for each variable [1,2,3]. 
+The famous Iris Fisher's data is a well studied statistical chain and pattern recognistion dataseet that studies variables within three species of flowers: setosa, versicolor, and virginica. Each species has four variables those being : Petal length (cm), Petal Width (cm), Sepal length (cm), and Sepal Width (cm). The dataset comprises of 50 cases for each variable [1,2,3]. 
 
 Sir Ronald Aylmer Fisher is accredited with the development adn discovery of the Iris Fisher's dataset [3]. His goal was to identify a discriminant analysis i.e. to produce a simple function that, given the four measurements, will classify a flower correctly [4]. From Fisher's data, it can be concluded that if the Iris flower has a sepal and petal lengths of 6-8cm and 5-7cm respectively and a petal width of 1.5-2.5cm, it can be concluded that that Iris has a high probability of being an IrisVirginica. On the other hand,  if the Iris flower has a shorter sepal and petal length of 4.5-5.5cm and 1-2cm respectively and narrow 
  petals of 0.1-.5cm this Iris flower is most likely an Iris-Setosa. An Iris flower that lies between these two parameters is most probably an Iris-Versicolor. [4] 
