@@ -30,7 +30,7 @@ from sklearn.cluster import KMeans
 file = 'iris.data' 
 titles = ['Sepal Length','Sepal Width','Petal Length','Petal Width','Species'] 
 sns.set(style="whitegrid")
-#This piece of code allows the file to be open and read in order for the data to be extracted and also allows for error handling. If the file cannot be found this code will return the text a text statement. The pandas module (pd) allows for the file to be open.  This covers topics from week 7 (files), week 9 (error handling), week 6(modueles). I had a problem with importing pandas - it was not recognised by my PC. I had to run the code from a virtual environment to enable pandas to run correctly reference to how I resolved that issue is found here:  https://stackoverflow.com/questions/65084318/trouble-installing-pandas-on-new-macbook-air-m1
+#This piece of code allows the file to be opened and read in order for the data to be extracted and also allows for error handling. If the file cannot be found this code will return the text a text statement. The pandas module (pd) allows for the file to be open.  This covers topics from week 7 (files), week 9 (error handling), week 6(modueles). I had a problem with importing pandas - it was not recognised by my PC. I had to run the code from a virtual environment to enable pandas to run correctly reference to how I resolved that issue is found here:  https://stackoverflow.com/questions/65084318/trouble-installing-pandas-on-new-macbook-air-m1
 try:
     with open (file, "rt") as f: 
         data = pd.read_csv(file, header=None, names=titles)
@@ -161,8 +161,7 @@ else:
 #plt.show()
 plt.clf()
 
-#REQUIREMENT 3 - Generate scatter plots. Similar to requirement 2 I incorporated radio buttons, imformation messages, else/if/elis statments, and object classes to enable graph selection. I noticed that I could get more detailed scatter grpahs using seaborn however they were not recognised within the else/if/else statements in combination with the radio buttons. To show both functionality, I've included additional scatter plots using sns under the section requirement 4. 
-
+#REQUIREMENT 3 - Generate scatter plots. Similar to requirement 2 I incorporated radio buttons, imformation messages, else/if/elis statments, and object classes to enable graph selection. I tried to create scatter plots with matplotlib however got more detail with the seaborn scatter plots.  
 
 print ("Please select an option in the 'Scatter' dialog, submit, and close the window") 
 class RadioButton2(tk.Tk):
@@ -183,13 +182,13 @@ class RadioButton2(tk.Tk):
 
     scatter = self1.selected_value2
        # Function for a close button to exit the pop-up screen.
-
+#Scatter plots
     def calc2():
         if scatter.get() == 1:
             sns.scatterplot(data = data, x= "Petal Length", y = "Petal Width", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
             
-
+#File1
             filename = "Scatter Plot: Petal Length vs Petal Width.jpg"
             #plt.show()
             plt.savefig(filename)
@@ -197,7 +196,7 @@ class RadioButton2(tk.Tk):
 
             sns.scatterplot(data = data, x= "Sepal Length", y = "Sepal Width", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
-            
+#File 2
             filename = "Scatter Plot: Sepal Length vs Sepal Width.jpg"
             #plt.show()
             plt.savefig(filename)
@@ -205,15 +204,15 @@ class RadioButton2(tk.Tk):
 
             sns.scatterplot(data = data, x= "Petal Length", y = "Sepal Length", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
-            
+#File 3            
             filename = "Scatter Plot: Petal Length vs Sepal Length.jpg"
             #plt.show()
             plt.savefig(filename)
             plt.clf()
-
+            
             sns.scatterplot(data = data, x= "Petal Width", y = "Sepal Width", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
-           
+#File 4          
             filename = "Scatter Plot: Petal Width vs Sepal Width.jpg"
             #plt.show()
             plt.savefig(filename)
@@ -221,7 +220,7 @@ class RadioButton2(tk.Tk):
 
             sns.scatterplot(data = data, x= "Petal Width", y = "Sepal Length", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
-            
+#File 5            
             filename = "Scatter Plot: Petal Width vs Sepal Length.jpg"
             #plt.show()
             plt.savefig(filename)
@@ -229,7 +228,7 @@ class RadioButton2(tk.Tk):
 
             sns.scatterplot(data = data, x= "Petal Length", y = "Sepal Width", legend = True, hue = "Species" )
             plt.legend(labels=["Iris_Setosa", "Iris_Virginica", "Iris_Versicolor"])
-            
+#File 6            
             filename = "Scatter Plot: Petal Length vs Sepal Width.jpg"
             #plt.show()
             plt.savefig(filename)
@@ -244,7 +243,7 @@ class RadioButton2(tk.Tk):
 
     def Close2():
         self1.destroy()
-
+#Buttons 
     self1.btn = tk.Button(self1,text="click to submit_",padx=5,pady=5,command = calc2).pack()
     self1.btn = tk.Button(self1,text="EXIT_",padx=5,pady=5,command = Close2).pack()
 
@@ -255,7 +254,7 @@ if __name__ == "__main__":
 #REQUIREMENT 4:
 # Add aditional data for analysing - I first looked at what other plots were available using seaborn, sklearn, and matlibpot. Through this I found jointplots, line pots, additional scatter plots, and 3D cluster plots. I combined to if/else/elif statements to support end user interface. 
 join_reps = input ("Would you like to generate and save jointplot reports? (y/n):")
-
+#Joint Reports
 if join_reps == 'y' or join_reps =='Y':
     sns.jointplot(data=data, x = "Petal Length", y = "Sepal Length", kind= "reg", height=7, ratio=2, marginal_ticks=True)
     plt.suptitle("Petal Length vs Sepal length")
@@ -284,7 +283,7 @@ elif join_reps == 'n' or join_reps == 'N':
     print("Ok, No was selected - additional graphs were generated")
 else:
     print("No valid option was selected - additional graphs were generated")
-
+#Line reports
 line_rep = input ("Would you like to generate and save line reports? (y/n):")
 if line_rep == 'y' or line_rep =='Y':
     sns.set_theme(style="darkgrid") #Setting backgrond color
@@ -322,7 +321,7 @@ elif line_rep == 'n' or line_rep == 'N':
     print("Ok, No was selected - additional graphs were generated")
 else:
     print("No valid option was selected - additional graphs were generated")
-
+#Cluster reports
 cluster_rep = input ("Would you like to generate a cluster report? (y/n):")
 if cluster_rep == 'y' or cluster_rep =='Y':
     
@@ -350,7 +349,7 @@ if cluster_rep == 'y' or cluster_rep =='Y':
     # Reordering  the labels to have colors matching the cluster results
     y = np.choose(y, [1, 2, 0]).astype(float)
     ax.scatter(X[:, 3], X[:, 0], X[:, 2], c=y, edgecolor="blue")
-
+#Graph details 
     ax.w_xaxis.set_ticklabels([])
     ax.w_yaxis.set_ticklabels([])
     ax.w_zaxis.set_ticklabels([])
@@ -371,6 +370,6 @@ elif cluster_rep == 'n' or cluster_rep == 'N':
 else:
     print("No valid option was selected - additional graphs were generated")
 
-
+#Information box to state that the end of the project has been reached
 eas.msgbox("You have reached the end of the Project - thank you!  ", title = "Code Complete")
 
